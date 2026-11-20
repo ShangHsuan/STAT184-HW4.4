@@ -3,6 +3,7 @@ title: "Reproducible Data Analysis"
 subtitle: "STAT 184 - HW #4.3"
 author: "Shang Hsuan Huang"
 date: "November 17, 2026"
+date-modified: "November 20, 2026"
 lang: en
 format: pdf
 execute:
@@ -11,9 +12,13 @@ execute:
 ---
 
 
+
 ```{r}
 #| label: setup
 #| include: false
+
+# Coding Style: BOAST Style Guide (camelCase)
+# https://educationshinyappteam.github.io/Style_Guide/coding.html
 
 # Load all packages
 library(ggplot2)
@@ -178,9 +183,9 @@ bigTenData <- games |>
   filter(conference_name == "Big Ten Conference") |>
   group_by(short_name) |>
   summarise(
-    average_points = mean(team_score, na.rm = TRUE)
+    averagePoints = mean(team_score, na.rm = TRUE)
   ) |>
-  arrange(desc(average_points))
+  arrange(desc(averagePoints))
 
 ```
 
@@ -196,13 +201,13 @@ bigTenData <- games |>
 ggplot(
   data = bigTenData,
   mapping = aes(
-    x = average_points,
-    y = reorder(short_name, average_points)
+    x = averagePoints,
+    y = reorder(short_name, averagePoints)
   )
 ) +
   geom_col(fill = "steelblue") +
   geom_text(
-    mapping = aes(label = round(average_points, 1)),
+    mapping = aes(label = round(averagePoints, 1)),
     hjust = 1.1,
     color = "white",
     size = 3
@@ -488,7 +493,7 @@ The following response was provided by the instructor. It was generated using Op
 
 **Generic Prompt:** Create a data visualization for these data. Calcium.csv
 
-![Average Values per Column from the Generic Prompt](chatgptPlot.png){#fig-calcium-generic width=90%}
+![Average Values per Column from the Generic Prompt](chatgptPlot.png){#fig-calcium-generic width=90% fig-alt="A single line connects eight column means without separating the two treatment groups."}
 
 **ChatGPT Response:**
 
